@@ -71,7 +71,7 @@ export default {
             name: "English",
         },
     ],
-    status: "Released",
+    status: "Releasedd",
     tagline: "Darkness rises... and light to meet it",
     title: "Star Wars: The Last Jedi",
     video: false,
