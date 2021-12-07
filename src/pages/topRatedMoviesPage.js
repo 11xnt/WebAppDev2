@@ -6,7 +6,7 @@ import AddToWatchListIcon from '../components/cardIcons/addToWatchList'
 import { getTopRatedMovies } from "../api/tmdb-api";
 
 const TopRatedMoviesPage = (props) => {
-    const {  data, error, isLoading, isError }  = useQuery('movie', getTopRatedMovies)
+    const {  data, error, isLoading, isError }  = useQuery('discover1', getTopRatedMovies)
 
     if (isLoading) {
         return <Spinner />
@@ -15,17 +15,17 @@ const TopRatedMoviesPage = (props) => {
     if (isError) {
         return <h1>{error.message}</h1>
     }
-    const movies1 = data.results;
+    const movies2 = data.results;
 
     // Redundant, but necessary to avoid app crashing.
-    const favorites = movies1.filter(m => m.favorite)
+    const favorites = movies2.filter(m => m.favorite)
     localStorage.setItem('favorites', JSON.stringify(favorites))
     const addToFavorites = (movieId) => true
 
     return (
         <PageTemplate
             title='Top Rated Movies'
-            movies={movies1}
+            movies={movies2}
             action={(movie) => {
                 return <AddToWatchListIcon movie={movie} />
             }}

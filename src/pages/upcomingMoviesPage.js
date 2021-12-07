@@ -6,7 +6,7 @@ import AddToWatchListIcon from '../components/cardIcons/addToWatchList'
 import {getUpcomingMovies} from "../api/tmdb-api";
 
 const UpcomingMoviesPage = (props) => {
-    const {  data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovies)
+    const {  data, error, isLoading, isError }  = useQuery('discover3', getUpcomingMovies)
 
     if (isLoading) {
         return <Spinner />

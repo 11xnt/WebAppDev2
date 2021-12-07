@@ -54,6 +54,7 @@ const MovieDetails = ({ movie }) => {
                     </li>
                 ))}
             </Paper>
+
             <Paper component="ul" className={classes.root}>
                 <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
                 <Chip
@@ -78,6 +79,7 @@ const MovieDetails = ({ movie }) => {
                     </li>
                 ))}
             </Paper>
+
             <Fab
                 color="secondary"
                 variant="extended"
@@ -90,6 +92,7 @@ const MovieDetails = ({ movie }) => {
             <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <MovieReviews movie={movie} />
             </Drawer>
+
         </>
     );
 };
