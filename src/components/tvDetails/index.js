@@ -28,9 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const TvDetails = ( props) => {
+const TvDetails = ({ tv }) => {
     const classes = useStyles();
-    const tv = props.tv
 
     return (
         <>
@@ -53,16 +52,16 @@ const TvDetails = ( props) => {
                 ))}
             </Paper>
             <Paper component="ul" className={classes.root}>
-                <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
+                <Chip icon={<AccessTimeIcon />} label={`${tv.episode_count} episodes.`} />
                 <Chip
                     icon={<MonetizationIcon />}
-                    label={`${tv.revenue.toLocaleString()}`}
+                    label={`${tv.in_production.toLocaleString()}`}
                 />
                 <Chip
                     icon={<StarRate />}
                     label={`${tv.vote_average} (${tv.vote_count}`}
                 />
-                <Chip label={`Released: ${tv.release_date}`} />
+                <Chip label={`Released: ${tv.first_air_date}`} />
             </Paper>
 
             <Fab

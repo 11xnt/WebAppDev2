@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -13,6 +13,7 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
+import {MoviesContext} from "../../contexts/moviesContext";
 
 const useStyles = makeStyles({
     card: { maxWidth: 345 },
@@ -22,17 +23,33 @@ const useStyles = makeStyles({
     },
 });
 
-export default function TvCard(props) {
+export default function TvCard({ tv, action }) {
     const classes = useStyles();
-    const movie = props.movie;
+    const { favorites, addToFavorites } = useContext(MoviesContext);
+    const { watchLists, addToWatchList } = useContext(MoviesContext);
+
+    if (favorites.find((id) => id === tv.id)) {
+        tv.favorite = true;
+    } else {
+        tv.favorite = false
+    }
+
+
+    const handleAddToFavorite = (e) => {
+        e.preventDefault();
+        addToFavorites(tv);
+    };
+
+
+
     return (
         <Card className={classes.card}>
-            <CardHeader className={classes.header} title={movie.title} />
+            <CardHeader className={classes.header} title={tv.title} />
             <CardMedia
                 className={classes.media}
                 image={
-                    movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                    tv.poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${tv.poster_path}`
                         : img
                 }
             />
@@ -41,13 +58,13 @@ export default function TvCard(props) {
                     <Grid item xs={6}>
                         <Typography variant="h6" component="p">
                             <CalendarIcon fontSize="small" />
-                            {movie.release_date}
+                            {tv.first_air_date}
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="h6" component="p">
                             <StarRateIcon fontSize="small" />
-                            {"  "} {movie.vote_average}{" "}
+                            {"  "} {tv.vote_average}{" "}
                         </Typography>
                     </Grid>
                 </Grid>

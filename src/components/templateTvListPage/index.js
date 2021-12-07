@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
+import FilterCard from "../filterTvCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import MovieList from "../movieList";
+import TvList from "../tvList";
 
 const useStyles = makeStyles({
     root: {
@@ -11,20 +11,20 @@ const useStyles = makeStyles({
     },
 });
 
-function MovieListPageTemplate({ movies, title, action }) {
+
+function TvListPageTemplate({ tvs, title, action }) {
     const classes = useStyles();
     const [nameFilter, setNameFilter] = useState("");
     const [genreFilter, setGenreFilter] = useState("0");
     const genreId = Number(genreFilter);
 
-    let displayedMovies = movies
-        // .filter((m) => {
-        //     return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-        // })
-        // .filter((m) => {
-        //     return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-        // });
-
+    let displayedTvs = tvs
+    //     .filter((m) => {
+    //         return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    //     })
+    //     .filter((m) => {
+    //         return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    //     });
     const handleChange = (type, value) => {
         if (type === "name") setNameFilter(value);
         else setGenreFilter(value);
@@ -43,9 +43,9 @@ function MovieListPageTemplate({ movies, title, action }) {
                         genreFilter={genreFilter}
                     />
                 </Grid>
-                <MovieList action={action} movies={displayedMovies}></MovieList>
+                <TvList action={action} tvs={displayedTvs}></TvList>
             </Grid>
         </Grid>
     );
 }
-export default MovieListPageTemplate;
+export default TvListPageTemplate;

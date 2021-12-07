@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import HomeIcon from "@material-ui/icons/Home";
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,9 +21,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const TvHeader = (props) => {
+const TvHeader = ( { tv, history }) => {
     const classes = useStyles();
-    const movie = props.movie;
 
     return (
         <Paper component="div" className={classes.root}>
@@ -31,18 +31,18 @@ const TvHeader = (props) => {
             </IconButton>
 
             <Typography variant="h4" component="h3">
-                {movie.title}
-                <a href={movie.homepage}>
+                {tv.title}
+                <a href={tv.homepage}>
                     <HomeIcon color="primary" />
                 </a>
                 <br />
-                <span className={classes.tagLine}>{`   "${movie.tagline}"`} </span>
+                <span className={classes.tagLine}>{`   "${tv.tagline}"`} </span>
             </Typography>
-            <IconButton aria-label="go forward">
+            <IconButton aria-label="go forward" onClick={() => history.goForward() } >
                 <ArrowForwardIcon color="primary" fontSize="large" />
             </IconButton>
         </Paper>
     );
 };
 
-export default TvHeader;
+export default withRouter(TvHeader);

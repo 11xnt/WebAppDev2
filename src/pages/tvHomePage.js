@@ -4,6 +4,11 @@ import FilterCard from "../components/filterTvCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TvList from "../components/tvList";
+import {useQuery} from "react-query";
+import {getTvShows} from "../api/tmdb-api";
+import Spinner from "../components/spinner";
+import PageTemplate from "../components/templateTvListPage";
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 const useStyles = makeStyles({
     root: {
@@ -12,21 +17,30 @@ const useStyles = makeStyles({
 });
 
 const TvListPage = (props) => {
-    const classes = useStyles();
-    const movies = props.movies;
+    const {  data, error, isLoading, isError }  = useQuery('discover2', getTvShows)
+
+    if (isLoading) {
+        return <Spinner />
+    }
+
+    if (isError) {
+        return <h1>{error.message}</h1>
+    }
+    const tv = data.results;
+
+    // Redundant, but necessary to avoid app crashing.
+    const favorites = tv.filter(m => m.favorite)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+    const addToFavorites = (movieId) => true
 
     return (
-        <Grid container className={classes.root}>
-            <Grid item xs={12}>
-                <Header title={"Home Page"} />
-            </Grid>
-            <Grid item container spacing={5}>
-                <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
-                    <FilterCard />
-                </Grid>
-                <TvList movies={movies}></TvList>
-            </Grid>
-        </Grid>
+        <PageTemplate
+            title="Discover Tv Shows"
+            tvs={tv}
+            action={(tv) => {
+                return <AddToFavoritesIcon tv={tv} />
+            }}
+        />
     );
 };
 export default TvListPage;
