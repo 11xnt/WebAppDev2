@@ -13,7 +13,8 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
-import {MoviesContext} from "../../contexts/moviesContext";
+// import {MoviesContext} from "../../contexts/moviesContext";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
     card: { maxWidth: 345 },
@@ -25,20 +26,20 @@ const useStyles = makeStyles({
 
 export default function TvCard({ tv, action }) {
     const classes = useStyles();
-    const { favorites, addToFavorites } = useContext(MoviesContext);
-    const { watchLists, addToWatchList } = useContext(MoviesContext);
+    // const { favorites, addToFavorites } = useContext(MoviesContext);
+    // const { watchLists, addToWatchList } = useContext(MoviesContext);
+    //
+    // if (favorites.find((id) => id === tv.id)) {
+    //     tv.favorite = true;
+    // } else {
+    //     tv.favorite = false
+    // }
 
-    if (favorites.find((id) => id === tv.id)) {
-        tv.favorite = true;
-    } else {
-        tv.favorite = false
-    }
 
-
-    const handleAddToFavorite = (e) => {
-        e.preventDefault();
-        addToFavorites(tv);
-    };
+    // const handleAddToFavorite = (e) => {
+    //     e.preventDefault();
+    //     addToFavorites(tv);
+    // };
 
 
 
@@ -70,12 +71,15 @@ export default function TvCard({ tv, action }) {
                 </Grid>
             </CardContent>
             <CardActions disableSpacing>
+                {action(tv)}
                 <IconButton aria-label="add to favorites" onClick={null}>
                     <FavoriteIcon color="primary" fontSize="large" />
                 </IconButton>
+                <Link to={`/tvshows/${tv.id}`}>
                 <Button variant="outlined" size="medium" color="primary">
                     More Info ...
                 </Button>
+                </Link>
             </CardActions>
         </Card>
     );

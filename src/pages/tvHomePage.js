@@ -1,9 +1,5 @@
 import React from "react";
-import Header from "../components/headerTvList";
-import FilterCard from "../components/filterTvCard";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import TvList from "../components/tvList";
 import {useQuery} from "react-query";
 import {getTvShows} from "../api/tmdb-api";
 import Spinner from "../components/spinner";

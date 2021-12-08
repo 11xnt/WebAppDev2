@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -51,11 +51,12 @@ const TvDetails = ({ tv }) => {
                     </li>
                 ))}
             </Paper>
+
             <Paper component="ul" className={classes.root}>
                 <Chip icon={<AccessTimeIcon />} label={`${tv.episode_count} episodes.`} />
                 <Chip
                     icon={<MonetizationIcon />}
-                    label={`${tv.in_production.toLocaleString()}`}
+                    label={`In Production: ${tv.in_production.toLocaleString()}`}
                 />
                 <Chip
                     icon={<StarRate />}
