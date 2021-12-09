@@ -4,7 +4,7 @@ import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
-import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {Button, FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import {QueryClient} from "react-query";
 
@@ -56,6 +56,9 @@ function MovieListPageTemplate({ movies, title, action }) {
             <Grid item xs={12}>
                 <Header title={title} />
             </Grid>
+            <Button size="large" onClick={e =>
+                window.confirm("Are you a human?")
+            }>Confirm</Button>
             <Grid item container spacing={5}>
                 <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
                     <FilterCard

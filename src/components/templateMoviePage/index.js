@@ -7,6 +7,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import {Button} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +40,6 @@ const TemplateMoviePage = ({ movie, children }) => {
     return (
         <>
             <MovieHeader movie={movie} />
-
             <Grid container spacing={5} style={{ padding: "15px" }}>
                 <Grid item xs={3}>
                     <div className={classes.root}>
