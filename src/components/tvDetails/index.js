@@ -1,8 +1,8 @@
 import React, { useState} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import MonetizationIcon from "@material-ui/icons/MonetizationOn";
+import VideocamIcon from "@material-ui/icons/Videocam";
+import NumbersIcon from "@material-ui/icons/FormatListNumbered";
 import StarRate from "@material-ui/icons/StarRate";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
@@ -53,10 +53,11 @@ const TvDetails = ({ tv }) => {
             </Paper>
 
             <Paper component="ul" className={classes.root}>
-                <Chip icon={<AccessTimeIcon />} label={`${tv.episode_count} episodes.`} />
+                <Chip icon={<NumbersIcon />} label={`${tv.number_of_episodes} episodes.`} />
                 <Chip
-                    icon={<MonetizationIcon />}
+                    icon={<VideocamIcon />}
                     label={`In Production: ${tv.in_production.toLocaleString()}`}
+
                 />
                 <Chip
                     icon={<StarRate />}
