@@ -4,7 +4,7 @@ import SampleTv from "./sampleTV";
 import { MemoryRouter } from "react-router";
 import TvContextProvider from "../contexts/tvContext";
 import { action } from "@storybook/addon-actions";
-import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import AddToFavoritesIconTV from "../components/cardIcons/addToFavoritesTV";
 
 export default {
     title: "TV/TvCard",
@@ -19,7 +19,7 @@ export const Basic = () => {
     return (
         <TvCard
             tv={SampleTv}
-            action={(tv) => <AddToFavoritesIcon tv={tv} />}
+            action={(tv) => <AddToFavoritesIconTV tv={tv} />}
             taging={(tv) => null}
         />
     );
@@ -31,7 +31,7 @@ export const Exceptional = () => {
     return (
         <TvCard
             tv={sampleNoPoster}
-            action={(tv) => <AddToFavoritesIcon tv={tv} />}
+            action={(tv) => <AddToFavoritesIconTV tv={tv} />}
             taging={(tv) => null}
         />
     );

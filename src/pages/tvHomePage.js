@@ -1,16 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {useQuery} from "react-query";
 import {getTvShows} from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import PageTemplate from "../components/templateTvListPage";
-import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
-
-const useStyles = makeStyles({
-    root: {
-        padding: "20px",
-    },
-});
+import AddToFavoritesIconTV from "../components/cardIcons/addToFavoritesTV";
 
 const TvListPage = (props) => {
     const {  data, error, isLoading, isError }  = useQuery('discover2', getTvShows)
@@ -22,19 +15,19 @@ const TvListPage = (props) => {
     if (isError) {
         return <h1>{error.message}</h1>
     }
-    const tv = data.results;
+    const tvs = data.results;
 
     // Redundant, but necessary to avoid app crashing.
-    const favorites = tv.filter(m => m.favorite)
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-    const addToFavorites = (movieId) => true
+    const favoritesTV = tvs.filter(m => m.favoriteTV)
+    localStorage.setItem('favoritesTV', JSON.stringify(favoritesTV))
+    const addToFavoritesTV = (tvId) => true
 
     return (
         <PageTemplate
-            title="Discover Tv Shows"
-            tvs={tv}
+            title="Discover TV Shows"
+            tvs={tvs}
             action={(tv) => {
-                return <AddToFavoritesIcon tv={tv} />
+                return <AddToFavoritesIconTV tv={tv} />
             }}
         />
     );

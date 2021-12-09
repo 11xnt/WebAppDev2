@@ -31,7 +31,7 @@ const TvHeader = ( { tv, history }) => {
             </IconButton>
 
             <Typography variant="h4" component="h3">
-                {tv.title}
+                {tv.name}
                 <a href={tv.homepage}>
                     <HomeIcon color="primary" />
                 </a>

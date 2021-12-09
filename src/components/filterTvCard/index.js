@@ -62,7 +62,7 @@ export default function FilterTvCard(props) {
             <CardContent>
                 <Typography variant="h5" component="h1">
                     <SearchIcon fontSize="large" />
-                    Filter the tv shows.
+                    Filter the TV shows.
                 </Typography>
                 <TextField
                     className={classes.formControl}
@@ -78,6 +78,8 @@ export default function FilterTvCard(props) {
                     <Select
                         labelId="genre-label"
                         id="genre-select"
+                        value={props.genreFilter}
+                        onChange={handleGenreChange}
                     >
                         {genres.map((genre) => {
                             return (
@@ -97,7 +99,7 @@ export default function FilterTvCard(props) {
             <CardContent>
                 <Typography variant="h5" component="h1">
                     <SearchIcon fontSize="large" />
-                    Filter the tv shows.
+                    Filter the TV shows.
                     <br />
                 </Typography>
             </CardContent>

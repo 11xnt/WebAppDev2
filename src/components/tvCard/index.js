@@ -13,9 +13,9 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
-// import {MoviesContext} from "../../contexts/moviesContext";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
+import { TvContext } from "../../contexts/tvContext";
 
 const useStyles = makeStyles({
     card: { maxWidth: 345 },
@@ -27,20 +27,19 @@ const useStyles = makeStyles({
 
 export default function TvCard({ tv, action }) {
     const classes = useStyles();
-    // const { favorites, addToFavorites } = useContext(MoviesContext);
-    // const { watchLists, addToWatchList } = useContext(MoviesContext);
-    //
-    // if (favorites.find((id) => id === tv.id)) {
-    //     tv.favorite = true;
-    // } else {
-    //     tv.favorite = false
-    // }
+    const { favoritesTV, addToFavoritesTV } = useContext(TvContext);
+
+    if (favoritesTV.find((id) => id === tv.id)) {
+        tv.favoriteTV = true;
+    } else {
+        tv.favoriteTV = false
+    }
 
 
-    // const handleAddToFavorite = (e) => {
-    //     e.preventDefault();
-    //     addToFavorites(tv);
-    // };
+    const handleAddToFavoriteTV = (e) => {
+        e.preventDefault();
+        addToFavoritesTV(tv);
+    };
 
 
 
@@ -49,7 +48,7 @@ export default function TvCard({ tv, action }) {
             <CardHeader
                 className={classes.header}
                 avatar={
-                    tv.favorite ? (
+                    tv.favoriteTV ? (
                         <Avatar className={classes.avatar}>
                             <FavoriteIcon />
                         </Avatar>
@@ -57,7 +56,7 @@ export default function TvCard({ tv, action }) {
                 }
                 title={
                     <Typography variant="h5" component="p">
-                        {tv.title}{" "}
+                        {tv.name}{" "}
                     </Typography>
                 }
             />

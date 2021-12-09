@@ -19,12 +19,12 @@ function TvListPageTemplate({ tvs, title, action }) {
     const genreId = Number(genreFilter);
 
     let displayedTvs = tvs
-    //     .filter((m) => {
-    //         return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    //     })
-    //     .filter((m) => {
-    //         return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-    //     });
+        .filter((m) => {
+            return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+        })
+        .filter((m) => {
+            return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+        });
     const handleChange = (type, value) => {
         if (type === "name") setNameFilter(value);
         else setGenreFilter(value);
