@@ -1,26 +1,38 @@
 import React from "react";
 import TvCard from "../components/tvCard";
-import SampleMovie from "./sampleData";
+import SampleTv from "./sampleTV";
+import { MemoryRouter } from "react-router";
+import TvContextProvider from "../contexts/tvContext";
+import { action } from "@storybook/addon-actions";
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 export default {
     title: "TV/TvCard",
     component: TvCard,
+    decorators: [
+        (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+        (Story) => <TvContextProvider>{Story()}</TvContextProvider>,
+    ],
 };
 
 export const Basic = () => {
     return (
         <TvCard
-            movie={SampleMovie}
+            tv={SampleTv}
+            action={(tv) => <AddToFavoritesIcon tv={tv} />}
+            taging={(tv) => null}
         />
     );
 };
 Basic.storyName = "Default";
 
 export const Exceptional = () => {
-    const sampleNoPoster = { ...SampleMovie, poster_path: undefined };
+    const sampleNoPoster = { ...SampleTv, poster_path: undefined };
     return (
         <TvCard
-            movie={sampleNoPoster}
+            tv={sampleNoPoster}
+            action={(tv) => <AddToFavoritesIcon tv={tv} />}
+            taging={(tv) => null}
         />
     );
 };
