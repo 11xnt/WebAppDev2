@@ -78,7 +78,7 @@ The routes that contain '(Private Route)' will redirect the guest user to the lo
 If the user has already been authenticated, the user can visit these pages normally.
 
 
-## Independent learning (If relevant).
+## Independent learning.
 
 + Future labs to add authentication.
-+ TMDB API Documentation.
++ [TMDB API Documentation.](https://developers.themoviedb.org/3/getting-started/introduction)
