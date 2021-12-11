@@ -38,29 +38,29 @@ npm run storybook
 
 ### Component catalogue.
 
-![](./images/storybook.png)
+![](/src/images/storybook.png)
 
 
 ### UI Design.
 
 #### Filter TV Card
-![ ](./images/tvfiltercard.png)
+![ ](/src/images/tvfiltercard.png)
 >Refactored to the original movie filter card to suit the genres and namings.
 
 #### TV Card
-![ ](./images/tvcard.png)
+![ ](/src/images/tvcard.png)
 >Shows preview details of information on a tv show. Clicking the 'More info' button will display more information about the TV show. Refactored the calander to release the first episode air date.
 
 #### TV Header
-![ ](./images/tvheader.png)
+![ ](/src/images/tvheader.png)
 >Refactored the original movie header as to decouple the two to have future use without interfering with the movie header collection.
 
 #### TV Details
-![ ](./images/tvDetails.png)
+![ ](/src/images/tvDetails.png)
 >Refactored original details component to change swap out a few variables, such as replacing runtime to number of episodes and generated revenue to see if the tv show is still in production.
 
 #### TV Details Header
-![ ](./images/tvDetailsHeader.png)
+![ ](/src/images/tvDetailsHeader.png)
 >Refactored the movie details header to again split the responsibility of the one header to for future-proofing it.
 
 
